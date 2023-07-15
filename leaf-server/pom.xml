@@ -14,7 +14,7 @@
     <name>leaf-server</name>
     <description>Leaf HTTP Server</description>
     <properties>
-        <spring-boot-dependencies.version>1.5.18.RELEASE</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>2.6.14</spring-boot-dependencies.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -47,21 +47,12 @@
             <groupId>com.sankuai.inf.leaf</groupId>
             <artifactId>leaf-core</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
         </dependency>
-        <!--zk-->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>log4j</artifactId>
-                    <groupId>log4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -69,41 +60,6 @@
         </dependency>
     </dependencies>
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-dependencies.version}</version>
-                <configuration>
-                    <mainClass>com.sankuai.inf.leaf.server.LeafServerApplication</mainClass>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                            <excludeTransitive>false</excludeTransitive>
-                            <!-- 表示复制的jar文件去掉版本信息 -->
-                            <stripVersion>false</stripVersion>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
 
-        </plugins>
     </build>
 </project>

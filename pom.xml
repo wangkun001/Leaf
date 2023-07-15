@@ -10,6 +10,7 @@
     <modules>
         <module>leaf-core</module>
         <module>leaf-server</module>
+        <module>spring-boot-leaf-starter</module>
     </modules>
     <description>Distributed ID Generate Service</description>
     <developers>
@@ -36,19 +37,18 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring.version>4.3.18.RELEASE</spring.version>
+        <spring.version>5.3.26</spring.version>
         <junit.version>4.12</junit.version>
         <maven.compiler.version>3.5.1</maven.compiler.version>
-        <mybatis.version>3.3.0</mybatis.version>
+        <mybatis.version>3.5.13</mybatis.version>
         <perf4j.version>0.9.16</perf4j.version>
         <curator.version>2.6.0</curator.version>
-        <slf4j.version>1.7.2</slf4j.version>
+        <slf4j.version>2.0.7</slf4j.version>
         <druid.version>1.0.18</druid.version>
-        <jackson-databind.version>2.9.6</jackson-databind.version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
-        <commons-io.version>2.4</commons-io.version>
-        <log4j.version>2.7</log4j.version>
-        <mybatis-spring.version>1.2.5</mybatis-spring.version>
+        <jackson-databind.version>2.15.2</jackson-databind.version>
+        <mysql-connector-java.version>8.0.32</mysql-connector-java.version>
+        <commons-io.version>2.13.0</commons-io.version>
+        <mybatis-spring.version>2.1.1</mybatis-spring.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -57,28 +57,19 @@
                 <artifactId>leaf-core</artifactId>
                 <version>1.0.1</version>
             </dependency>
+
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>${druid.version}</version>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>4.0.3</version>
             </dependency>
-            <!--zk-->
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-recipes</artifactId>
-                <version>${curator.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>log4j</artifactId>
-                        <groupId>log4j</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
+
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
@@ -90,6 +81,7 @@
                 <artifactId>perf4j</artifactId>
                 <version>${perf4j.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -101,21 +93,25 @@
                 <artifactId>spring-core</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
@@ -123,30 +119,17 @@
             </dependency>
 
             <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-slf4j-impl</artifactId>
-                <version>${log4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api</artifactId>
-                <version>${log4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${log4j.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis-spring</artifactId>
                 <version>${mybatis-spring.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>

@@ -1,11 +1,11 @@
 package com.sankuai.inf.leaf.segment;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.sankuai.inf.leaf.IDGen;
 import com.sankuai.inf.leaf.common.PropertyFactory;
 import com.sankuai.inf.leaf.common.Result;
 import com.sankuai.inf.leaf.segment.dao.IDAllocDao;
 import com.sankuai.inf.leaf.segment.dao.impl.IDAllocDaoImpl;
+import com.zaxxer.hikari.HikariDataSource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,18 +16,17 @@ import java.util.Properties;
 
 public class IDGenServiceTest {
     IDGen idGen;
-    DruidDataSource dataSource;
+    HikariDataSource dataSource;
     @Before
     public void before() throws IOException, SQLException {
         // Load Db Config
         Properties properties = PropertyFactory.getProperties();
 
         // Config dataSource
-        dataSource = new DruidDataSource();
-        dataSource.setUrl(properties.getProperty("jdbc.url"));
+        dataSource = new HikariDataSource();
+        dataSource.setJdbcUrl(properties.getProperty("jdbc.url"));
         dataSource.setUsername(properties.getProperty("jdbc.username"));
         dataSource.setPassword(properties.getProperty("jdbc.password"));
-        dataSource.init();
 
         // Config Dao
         IDAllocDao dao = new IDAllocDaoImpl(dataSource);
